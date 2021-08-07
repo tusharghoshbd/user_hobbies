@@ -1,0 +1,6 @@
+build/
+logs/
+node_modules/
+nohup.out
+*.swp
+package-lock.json
