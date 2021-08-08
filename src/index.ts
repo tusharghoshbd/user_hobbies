@@ -10,7 +10,7 @@ import { userRouter } from "./routers/user.router";
 import { hobbiesRouter } from "./routers/hobbies.router";
 
 dotenv.config()
-const { DB_HOST, DB_PORT, DB_NAME, API_URL, SWAGGER_VERSION } = process.env;
+const { DB_HOST, DB_PORT, DB_NAME, API_URL, SWAGGER_VERSION, DB_NAME_TEST } = process.env;
 const PORT = process.env.PORT || 3000;
 const app = express();
 app.use(express.json());
@@ -44,8 +44,25 @@ app.get('/', (req, res) => {
 })
 
 app.listen(PORT, () => {
-    console.log(`The server is running on port ${PORT}`)
-    mongoose.connect(`mongodb://${DB_HOST}:${DB_PORT}/${DB_NAME}`, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false }, () => {
-        console.log("The database is Connected.");
+    console.log(`The server is running on port ${PORT}`);
+
+    const { NODE_ENV } = process.env;
+    let dbConnUrl = "";
+    if (NODE_ENV === 'test') {
+        dbConnUrl = `mongodb://${DB_HOST}:${DB_PORT}/${DB_NAME_TEST}`;
+    }
+    else if (NODE_ENV === 'production') {
+        // to do
+    }
+    else {
+        dbConnUrl = `mongodb://${DB_HOST}:${DB_PORT}/${DB_NAME}`
+    }
+    console.log("Info:", { dbConnUrl, NODE_ENV });
+    mongoose.connect(dbConnUrl, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false }, () => {
+        if (NODE_ENV !== 'test') {
+            console.log("The database is Connected.");
+        }
     });
 })
+
+export default app;
