@@ -5,10 +5,11 @@ User hobbies management tools
 ## Installation
 
 ### Environment
-First of all you have to install <code>Node.js</code>, <code>NPM</code>, <code>MongoDB</code> to your PC.
+First of all you have to install <code>Node.js</code>, <code>NPM</code>, <code>MongoDB</code>, <code>TypeScript</code> to your PC.
 - Node version should be later <code>14.0.0 or later</code>.
 - NPM version should be later <code>6.14.0 or later</code>.
 - MongoDB version should be <code>v3.6.8</code>.
+- TypeScript version should be <code>4.1.3</code>.
 ### Run the API service 
 
 Navigate yourself to the root folder of the application folder and run the following commands to run in your local pc:
@@ -20,6 +21,10 @@ npm start
 After successfully running, you see two messages in the console. 
 <pre>
 The server is running on port 3000
+Info: {
+  dbConnUrl: 'mongodb://localhost:root/user_hobbies',
+  NODE_ENV: 'development'
+}
 The database is Connected.
 </pre>
 
@@ -33,8 +38,8 @@ For api  documentation, please visit `http://localhost:3000/api-docs/`
 ## Build
 
 Run `npm run build` to build the project. The build artifacts will be stored in the `build/` directory.
-## Unit testing case
-Run `npm run test` to execute the unit tests.
+## Unit test
+Run `npm run test` to execute the unit tests. For unit test running, we have created a separate database like `user_hobbies_test`. 
 
 The list of unit test: 
 
