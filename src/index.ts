@@ -4,10 +4,11 @@ import mongoose from "mongoose";
 import swaggerUi from "swagger-ui-express"
 import swaggerJsDoc from "swagger-jsdoc";
 import { isAuthenticated } from "./middleware/auth.middleware";
-require('dotenv').config()
+import * as dotenv from "dotenv";
 
 import { userRouter } from "./routers/user.router";
 
+dotenv.config()
 const { DB_HOST, DB_PORT, DB_NAME, API_URL, SWAGGER_VERSION } = process.env;
 const PORT = process.env.PORT || 3000;
 const app = express();
@@ -42,7 +43,7 @@ app.get('/', (req, res) => {
 
 app.listen(PORT, () => {
     console.log(`The server is running on port ${PORT}`)
-    mongoose.connect(`mongodb://${DB_HOST}:${DB_PORT}/${DB_NAME}`, { useNewUrlParser: true, useUnifiedTopology: true }, () => {
+    mongoose.connect(`mongodb://${DB_HOST}:${DB_PORT}/${DB_NAME}`, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false }, () => {
         console.log("The database is Connected.");
     });
 })
