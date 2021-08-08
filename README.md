@@ -24,7 +24,35 @@ The database is Connected.
 </pre>
 
 Now you can run the backend service with URL `http://localhost:3000/`.
+
+### Run the API service documentation
 For api  documentation, please visit `http://localhost:3000/api-docs/`
 
+<img src="./images/swagger image.jpg"  alt="documentation"/>
 
+## Build
+
+Run `npm run build` to build the project. The build artifacts will be stored in the `build/` directory.
+## Unit testing case
+Run `npm run test` to execute the unit tests.
+
+The list of unit test: 
+
+ - Hobbies
+    - it should GET all the hobbies
+    - it should not POST a hobby without name key
+    - it should POST a hobby
+    - it should have a hobby named "Hobby_1"
+    - it should UPDATE a hobby
+    - it should DELETE a hobby
+
+  - User
+    - it should GET all the users
+    - it should not POST a user without name key
+    - it should POST a user
+    - it should have a User_1
+    - it should UPDATE a user
+    - it should DELETE a user
+
+<img src="./images/testing image.jpg"  alt="documentation"/>
 
