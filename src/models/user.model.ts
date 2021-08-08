@@ -3,7 +3,11 @@ const { Schema } = mongoose;
 
 const userSchema = new Schema({
 
-    name: String,
+    name: {
+        type: String,
+        required: true,
+        trim: true
+    },
     hobbies: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Hobbies' }]
 
 }, { collection: 'User' });

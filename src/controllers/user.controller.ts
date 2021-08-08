@@ -62,8 +62,7 @@ export const updateUser = async (req: Request, res: Response) => {
         const user = await UserModel.findOneAndUpdate({ _id: id },
             {
                 $set: { name }
-            },
-            { upsert: false }
+            }
         );
         return res.status(200).json({ success: true, user });
     }

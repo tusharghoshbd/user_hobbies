@@ -7,6 +7,7 @@ import { isAuthenticated } from "./middleware/auth.middleware";
 import * as dotenv from "dotenv";
 
 import { userRouter } from "./routers/user.router";
+import { hobbiesRouter } from "./routers/hobbies.router";
 
 dotenv.config()
 const { DB_HOST, DB_PORT, DB_NAME, API_URL, SWAGGER_VERSION } = process.env;
@@ -36,6 +37,7 @@ app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
 // routers
 app.use('/api/users', isAuthenticated, userRouter);
+app.use('/api/hobbies', isAuthenticated, hobbiesRouter);
 
 app.get('/', (req, res) => {
     res.send('API service is running');
