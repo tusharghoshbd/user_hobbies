@@ -1,6 +1,6 @@
 # User hobbies
 
-User hobbies management tools
+a simple RESTful API service for User hobbies.
 
 ## Installation
 
@@ -44,7 +44,7 @@ Run `npm run test` to execute the unit tests. For unit test running, we have cre
 The list of unit test: 
 
  - Hobbies
-    - it should GET all the hobbies
+    - it should GET all the hobbies by user id
     - it should not POST a hobby without name key
     - it should POST a hobby
     - it should have a hobby named "Hobby_1"

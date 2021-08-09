@@ -1,0 +1,6 @@
+{
+  "api": {
+    "basePath": "/api",
+    "uiBasePath": "/api-docs"
+  }
+}

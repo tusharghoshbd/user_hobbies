@@ -37,7 +37,7 @@ app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
 // routers
 app.use('/api/users', isAuthenticated, userRouter);
-app.use('/api/hobbies', isAuthenticated, hobbiesRouter);
+app.use('/api', isAuthenticated, hobbiesRouter);
 
 app.get('/', (req, res) => {
     res.send('API service is running');

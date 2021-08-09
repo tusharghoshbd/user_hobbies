@@ -8,27 +8,6 @@ import { serverError, resourceError } from "../services/utils.service"
  * @param  {Request} req
  * @param  {Response} res
  */
-export const getAllHobbies = async (req: Request, res: Response) => {
-
-    try {
-        // pagination
-        const { DEFAULT_PAGE_SIZE, DEFAULT_PAGE_NUMBER } = process.env;
-        const pageNumber: number = Number(req.query.pageNumber) || Number(DEFAULT_PAGE_NUMBER);
-        const pageSize: number = Number(req.query.pageSize) || Number(DEFAULT_PAGE_SIZE)
-        const skip = (pageNumber - 1) * pageSize
-
-        const hobbies = await HobbiesModel.find().limit(pageSize).skip(skip);
-        return res.status(200).json({ success: true, data: hobbies });
-
-    } catch (error: any) {
-        serverError(res, error)
-    }
-}
-
-/**
- * @param  {Request} req
- * @param  {Response} res
- */
 export const getAllHobbiesByUserId = async (req: Request, res: Response) => {
 
     try {

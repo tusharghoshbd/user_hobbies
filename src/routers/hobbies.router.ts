@@ -2,31 +2,10 @@ import { Router } from "express";
 import * as hobbiesController from "../controllers/hobbies.controller";
 
 export const hobbiesRouter: Router = Router();
-/**
- * @swagger
- * /api/hobbies:
- *  get:
- *    tags:
- *       - Hobbies
- *    description: Use to request all hobbies
- *    parameters:
- *      - in: query
- *        name: pageSize
- *        type: number
- *        description: Page size of pagination. Default page size is 1000.
- *      - in: query
- *        name: pageNumber
- *        type: number
- *        description: Page number of pagination. Default page number is 1.
- *    responses:
- *      '200':
- *        description: A successful response
- */
-hobbiesRouter.get('/', hobbiesController.getAllHobbies)
 
 /**
  * @swagger
- * /api/hobbies/{userId}:
+ * /api/users/{userId}/hobbies:
  *  get:
  *    tags:
  *       - Hobbies
@@ -49,11 +28,11 @@ hobbiesRouter.get('/', hobbiesController.getAllHobbies)
  *      '200':
  *        description: A successful response
  */
-hobbiesRouter.get('/:userId', hobbiesController.getAllHobbiesByUserId)
+hobbiesRouter.get('/users/:userId/hobbies', hobbiesController.getAllHobbiesByUserId)
 
 /**
  * @swagger
- * /api/hobbies/{userId}:
+ * /api/users/{userId}/hobbies:
  *   post:
  *     tags:
  *       - Hobbies
@@ -83,16 +62,21 @@ hobbiesRouter.get('/:userId', hobbiesController.getAllHobbiesByUserId)
  *           content:
  *              application/json
  */
-hobbiesRouter.post('/:userId', hobbiesController.saveHobbies)
+hobbiesRouter.post('/users/:userId/hobbies', hobbiesController.saveHobbies)
 
 /**
  * @swagger
- * /api/hobbies/{id}:
+ * /api/users/{userId}/hobbies/{id}:
  *   put:
  *     tags:
  *       - Hobbies
  *     description: Update a hobby
  *     parameters:
+ *       - in: path
+ *         name: userId
+ *         required: true
+ *         type: string
+ *         description: User id.
  *       - in: path
  *         name: id
  *         required: true
@@ -116,11 +100,11 @@ hobbiesRouter.post('/:userId', hobbiesController.saveHobbies)
  *           content:
  *              application/json
  */
-hobbiesRouter.put('/:id', hobbiesController.updateHobbies)
+hobbiesRouter.put('/users/:userId/hobbies/:id', hobbiesController.updateHobbies)
 
 /**
  * @swagger
- * /api/hobbies/{userId}/{id}:
+ * /api/users/{userId}/hobbies/{id}:
  *   delete:
  *     tags:
  *       - Hobbies
@@ -142,4 +126,4 @@ hobbiesRouter.put('/:id', hobbiesController.updateHobbies)
  *           content:
  *              application/json
  */
-hobbiesRouter.delete('/:userId/:id', hobbiesController.deleteHobbies)
+hobbiesRouter.delete('/users/:userId/hobbies/:id', hobbiesController.deleteHobbies)
